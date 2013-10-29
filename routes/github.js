@@ -31,10 +31,7 @@ function findAllRepos(accessToken) {
     ]).spread(function(userRepos, orgsWithRepos) {
       // Merge stuff together
       var orgRepos = orgsWithRepos.reduce(function(memo, org) { memo.push.apply(memo, org); return memo; }, []);
-      console.log(orgRepos);
-
       userRepos.push.apply(userRepos, orgRepos);
-      console.log(userRepos[20].owner);
       return userRepos;
     });
 }
