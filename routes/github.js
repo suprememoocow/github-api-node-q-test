@@ -40,7 +40,7 @@ function findAllRepos(accessToken) {
 }
 
 exports.list = function(req, res, next) {
-  return findAllRepos('cfc192fb1abd726b23fb439f6de89cf919bbe6b1' /*req.session.account.accessToken */)
+  return findAllRepos(req.session.account.accessToken)
     .then(function(repos) {
       res.render('github', {
         endpoint: req.query.endpoint,
