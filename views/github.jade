@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  form(action='submit', method='post')
+    input(type='hidden', name='endpoint', value=endpoint)
+
+    h1 Events
+    ul
+      each val in events
+        li
+          input(type='checkbox', name='events', value=val.id, checked=val.selected, id='cb_' + val.id)
+          label(for='cb_' + val.id)
+            strong
+              =val.name
+            br
+            small
+              =val.description
+
+    h1 Repositories
+    ul
+      each val, index in repos
+        li
+          input(type='checkbox', name='repos', value=val.full_name, id='repo_' + val.id)
+          label(for='repo_' + val.id)
+            img(src=val.owner.avatar_url)
+            =val.full_name
+
+    input(type='submit', value='Create Repositories')
